@@ -1,0 +1,21 @@
+# This file catches anything that accidentally ends up at root level
+# and covers OS/editor files that apply to the whole project
+
+# OS generated files
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs at root level
+*.log

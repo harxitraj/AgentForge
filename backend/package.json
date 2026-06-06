@@ -1,0 +1,13 @@
+{
+  "name": "agentforge-backend",
+  "version": "1.0.0",
+  "description": "AgentForge backend - Multi-agent AI orchestration platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["ai", "agents", "orchestration", "automation"],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Environment variables — never push real secrets
+.env
+.env.local
+.env.production
+.env.development
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
