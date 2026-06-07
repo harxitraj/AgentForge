@@ -7,7 +7,25 @@
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "keywords": ["ai", "agents", "orchestration", "automation"],
+  "keywords": [
+    "ai",
+    "agents",
+    "orchestration",
+    "automation"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^22.0.1",
+    "cors": "^2.8.6",
+    "dockerode": "^5.0.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.6.3",
+    "socket.io": "^4.8.3",
+    "uuid": "^14.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
 }

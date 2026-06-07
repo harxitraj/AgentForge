@@ -11,7 +11,7 @@ const linkRepo = async (req, res) => {
         const repo = await Repo.findOneAndUpdate(
             { repoUrl },
             { repoUrl, owner: match[1], repoName: match[2].replace('.git', '') },
-            { upsert: true, new: true }
+            { upsert: true, returnDocument: 'after' }
         );
 
         res.status(201).json(repo);

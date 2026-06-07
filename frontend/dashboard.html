@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentForge — Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- Socket.IO from CDN -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- Top Bar -->
+    <header class="topbar">
+        <div class="topbar-logo">Agent<span>Forge</span></div>
+        <div class="topbar-right">
+            <span id="providerDisplay" class="provider-badge">claude</span>
+            <span class="text-muted">|</span>
+            <a href="index.html" class="text-muted" style="font-size:13px;">← Home</a>
+        </div>
+    </header>
+
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+
+        <!-- Repo Linking -->
+        <div class="sidebar-section">
+            <h3>GitHub Repository</h3>
+            <div class="repo-input-group">
+                <input
+                    type="text"
+                    id="repoUrlInput"
+                    placeholder="https://github.com/user/repo"
+                />
+                <button class="btn btn-primary" id="linkRepoBtn">Link</button>
+            </div>
+            <div class="linked-repos" id="linkedReposList">
+                <!-- Repos populated by JS -->
+            </div>
+        </div>
+
+        <!-- Task Prompt -->
+        <div class="task-form">
+            <h3>New Task</h3>
+
+            <div class="selected-repo-display" id="selectedRepoDisplay">
+                No repository selected
+            </div>
+
+            <div class="form-group">
+                <label for="prompt">Task Prompt</label>
+                <textarea
+                    id="prompt"
+                    placeholder="Describe what you want the agent to do...&#10;&#10;Example: Create a utils.js file with a function that formats dates to DD/MM/YYYY"
+                ></textarea>
+            </div>
+
+            <button class="btn btn-primary run-btn" id="runTaskBtn" disabled>
+                🚀 Run Agent
+            </button>
+        </div>
+
+    </aside>
+
+    <!-- Main Panel -->
+    <main class="main-panel">
+
+        <!-- Tasks Header -->
+        <div class="tasks-header">
+            <h2>Agent Tasks</h2>
+            <button class="btn btn-outline" id="refreshTasksBtn" style="padding: 6px 14px; font-size: 13px;">
+                ↻ Refresh
+            </button>
+        </div>
+
+        <!-- Task Tabs -->
+        <div class="tasks-list" id="tasksList">
+            <!-- Task tabs populated by JS -->
+        </div>
+
+        <!-- Task Detail Area -->
+        <div class="task-detail" id="taskDetail">
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState">
+                <div class="empty-state-icon">🤖</div>
+                <p>No task selected</p>
+                <p class="text-muted" style="font-size:13px;">Link a repo, write a prompt, and run the agent</p>
+            </div>
+
+            <!-- Task Content (hidden until task selected) -->
+            <div id="taskContent" class="hidden">
+
+                <!-- Meta Info -->
+                <div class="task-meta" id="taskMeta">
+                    <!-- Populated by JS -->
+                </div>
+
+                <!-- Live Logs -->
+                <div class="logs-container">
+                    <div class="logs-header">
+                        <span>Agent Logs</span>
+                        <div class="logs-live-indicator" id="liveIndicator">
+                            <div class="live-dot"></div>
+                            Live
+                        </div>
+                    </div>
+                    <div class="logs-body" id="logsBody">
+                        <!-- Logs streamed here -->
+                    </div>
+                </div>
+
+                <!-- PR Result (shown when completed) -->
+                <div class="pr-result hidden" id="prResult">
+                    <div class="pr-result-left">
+                        <h3>✅ Pull Request Created</h3>
+                        <p>Your agent completed the task. Review and merge the PR on GitHub.</p>
+                    </div>
+                    <a href="#" id="prLink" target="_blank" class="btn btn-primary">
+                        View PR on GitHub →
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>

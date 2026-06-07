@@ -62,11 +62,14 @@ const generateCode = async (prompt, repoContext) => {
         extractText = (data) => data.content[0].text;
 
     } else if (provider === 'gemini') {
-        url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${process.env.GEMINI_API_KEY}`;
+        //url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${process.env.GEMINI_API_KEY}`;
+        url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
         headers = { 'Content-Type': 'application/json' };
         body = {
             contents: [{ parts: [{ text: fullPrompt }] }],
-            generationConfig: { maxOutputTokens: 4096 }
+            generationConfig: { maxOutputTokens: 8192,
+                                temperature: 0.2 
+                            }
         };
         extractText = (data) => data.candidates[0].content.parts[0].text;
 
